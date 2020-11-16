@@ -1,11 +1,8 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 
 class ControllerCatalogDadataOpencart extends Controller
 {
-    const COOPERATE = 'Created by Timur T.R / version[ 3.0.0 ]';
+    const COOPERATE = 'Created by Timur T.R / version[ 4.0.0 ]';
     const APP_PATH = 'view/javascript/dadata-opencart/';
     const APP_CONFIG = 'dadata-opencart/';
     private static $MODULE_NAME;
