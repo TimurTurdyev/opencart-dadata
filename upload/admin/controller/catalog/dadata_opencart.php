@@ -1,8 +1,11 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
 class ControllerCatalogDadataOpencart extends Controller
 {
-    const COOPERATE = 'Created by Timur T.R / version[ 4.0.0 ]';
+    const COOPERATE = 'Created by Timur T.R / version[ 3.0.0 ]';
     const APP_PATH = 'view/javascript/dadata-opencart/';
     const APP_CONFIG = 'dadata-opencart/';
     private static $MODULE_NAME;
@@ -121,6 +124,11 @@ class ControllerCatalogDadataOpencart extends Controller
             file_put_contents(DIR_CATALOG . self::APP_PATH . $page_name . '.css', $request_json['css']);
 
             $config = $this->model_setting_setting->getSetting(self::$MODULE_NAME);
+
+            if (empty($config[self::$MODULE_NAME . '_route'])) {
+                $config[self::$MODULE_NAME . '_route'] = [];
+            }
+
             $config[self::$MODULE_NAME . '_route'][$request_json['name']] = isset($request_json['status']) ? $request_json['status'] : 0;
             $this->model_setting_setting->editSetting(self::$MODULE_NAME, $config);
             $json['notification'] = 'Настройки успешно сохраненны!';
